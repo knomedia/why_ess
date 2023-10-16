@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres:14.2
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+
+  web:
+    build:
+      context: .
+    volumes:
+      - .:/usr/src/why_ess
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      APP_ROLE: web
+      DISABLE_ANNOTATIONS: 'true'
+      RAILS_ENV: development
+      BUNDLE_PATH: vendor/bundle
+      NODE_ENV: development
+      DB_HOST: db
+      DATABASE_URL: "postgres://postgres:password@db:5432/why_ess_development"
+      DB_USER: 'postgres'
+      SECRET_KEY_BASE: some-secret-for-local
+    command: sh -c "bin/dev"

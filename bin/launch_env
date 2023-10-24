@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+railsenv=$1
+RAILSENV="${1:-test}"
+echo "Launching: $RAILSENV"
+
+docker-compose -f docker-compose.yml -f docker-compose.$RAILSENV.yml run --rm web sh

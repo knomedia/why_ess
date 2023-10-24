@@ -1,0 +1,7 @@
+version: '3'
+services:
+  web:
+    environment:
+      RAILS_ENV: test
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: 'true'
+      DATABASE_URL: "postgres://postgres:password@db:5432/auditante_test"

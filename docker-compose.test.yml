@@ -5,3 +5,4 @@ services:
       RAILS_ENV: test
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: 'true'
       DATABASE_URL: "postgres://postgres:password@db:5432/auditante_test"
+      YELP_API_KEY: "secret-key"

@@ -1,4 +1,4 @@
-class Api::V1::ApplicationController < ApplicationController
+class Api::V1::ApiController < ApplicationController
 
   skip_before_action :verify_authenticity_token
   before_action :require_auth

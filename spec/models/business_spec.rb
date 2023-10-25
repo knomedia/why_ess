@@ -4,7 +4,6 @@ RSpec.describe Business, type: :model do
   describe "defaults" do
     it 'defaults listing to an empty hash' do
       subject = FactoryBot.create(:business)
-      puts subject
       expect(subject.listing).to eq({})
     end
   end

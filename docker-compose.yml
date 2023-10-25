@@ -28,6 +28,7 @@ services:
       DATABASE_URL: "postgres://postgres:password@db:5432/why_ess_development"
       DB_USER: 'postgres'
       SECRET_KEY_BASE: some-secret-for-local
+      YELP_CACHE_HOURS: 24
       YELP_API_BASE: "https://api.yelp.com"
       YELP_CLIENT_ID:
       YELP_API_KEY:

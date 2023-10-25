@@ -1,24 +1,31 @@
-# README
+# why_ess
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+get Yelp business listings via local cache (with expiry) or via API
 
-Things you may want to cover:
 
-* Ruby version
+### Getting Started
 
-* System dependencies
+Standard local docker setup for a rails app. See `docker-compose.yml`. Create an override to any any local secrets. From within the container (`docker-compose run --rm web sh`):
 
-* Configuration
+```sh
+bundle install
+bin/rake db:create
+bin/rake db:migrate
+```
 
-* Database creation
+### Running specs
 
-* Database initialization
+```sh
+bin/launch_env test
+bin/rspec spec/
+```
 
-* How to run the test suite
+### API
 
-* Services (job queues, cache servers, search engines, etc.)
+Only a single endpoint `/api/v1/business/:uuid`. Pass it a unique identifier (either `id`, or `alias` from Yelp), get back either a cached business listing, or a refreshed listing if cache has expired.
 
-* Deployment instructions
+API requires an `Account` record. Accounts automatically get a `token` populated. Pass the token in on each API call using a standard `Authorization` header:
 
-* ...
+```sh
+Authorization: Bearer <your-token>
+```
